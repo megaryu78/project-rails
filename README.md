@@ -1,2 +1,3 @@
 # project-rails
-Docker development environment with rails
+
+Rails development environment with docker

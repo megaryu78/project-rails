@@ -1,0 +1,38 @@
+#docker-compose.yml
+networks:
+  front:
+    driver: bridge
+  back:
+    driver: bridge
+services:
+  db:
+    image: postgres:13.1-alpine
+    restart: "no"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - back
+  adminer:
+    depends_on:
+      - db
+    image: adminer:4.7.8
+    restart: "no"
+    ports:
+      - 8080:8080
+    networks:
+      - back
+  rails:
+    depends_on:
+      - db
+    build: ./rails/
+    restart: "no"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/usr/src/app
+    networks:
+      - front
+      - back
