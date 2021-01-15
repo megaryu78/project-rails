@@ -1,7 +1,7 @@
 FROM ruby:2.6
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+RUN wget https://dl.yarnpkg.com/debian/pubkey.gpg && \
+    apt-key add ./pubkey.gpg && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update && \
@@ -11,8 +11,7 @@ RUN apt-get update && \
 WORKDIR /usr/src/app
 COPY Gemfile* ./
 RUN bundle install
-RUN rails new ./
-RUN ls -la ./
+RUN yarn install
 # COPY . .
 
 EXPOSE 3000
