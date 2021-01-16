@@ -1,3 +1,4 @@
-src/
-data/
-initdb/
+.DS_Store
+rails/
++rails/Dockerfile
++rails/Gemfile

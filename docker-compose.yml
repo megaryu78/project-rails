@@ -1,7 +1,7 @@
 #docker-compose.yml
 networks:
-  front:
-    driver: bridge
+  # front:
+  #   driver: bridge
   back:
     driver: bridge
 services:
@@ -24,15 +24,15 @@ services:
       - 8080:8080
     networks:
       - back
-  rails:
-    depends_on:
-      - db
-    build: ./rails/
-    restart: "no"
-    ports:
-      - 3000:3000
-    volumes:
-      - ./src:/usr/src/app
-    networks:
-      - front
-      - back
+  # rails:
+  #   depends_on:
+  #     - db
+  #   build: ./rails/
+  #   restart: "no"
+  #   ports:
+  #     - 3000:3000
+  #   # volumes:
+  #   #  - ./src:/usr/src/app
+  #   networks:
+  #     - front
+  #     - back

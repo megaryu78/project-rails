@@ -10,9 +10,9 @@ RUN apt-get update && \
 
 WORKDIR /usr/src/app
 COPY Gemfile* ./
+COPY ./src ./
 RUN bundle install
 RUN yarn install
-# COPY . .
 
 EXPOSE 3000
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-e", "development"]
