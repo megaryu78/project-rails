@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 WORKDIR /usr/src/app
 COPY Gemfile* ./
-COPY ./src ./
+# COPY . .
 RUN bundle install
 RUN yarn install
 
